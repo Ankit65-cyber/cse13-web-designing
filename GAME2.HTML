@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>😂 Funny Games Zone</title>
+
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 40px;
+        animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+        from { transform: translateY(0); }
+        to { transform: translateY(-10px); }
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        margin: 20px auto;
+        width: 320px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #ff6f61;
+        color: white;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #ff3d3d;
+    }
+
+    input {
+        padding: 8px;
+        font-size: 16px;
+        width: 60px;
+        text-align: center;
+    }
+
+    .emoji {
+        font-size: 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>😂 Funny Games Zone</h1>
+<p>Time pass + learning = FUN 😜</p>
+
+<!-- CLICK GAME -->
+<div class="card">
+    <h2>🎯 Click Madness</h2>
+    <p>Click as fast as you can!</p>
+    <button onclick="countClick()">CLICK ME 😆</button>
+    <p class="emoji">Clicks: <span id="clicks">0</span></p>
+</div>
+
+<!-- JOKE GAME -->
+<div class="card">
+    <h2>🤣 Joke Generator</h2>
+    <p id="joke">Ready to laugh?</p>
+    <button onclick="newJoke()">Tell me a joke 😂</button>
+</div>
+
+<!-- GUESS GAME -->
+<div class="card">
+    <h2>🎲 Guess the Number</h2>
+    <p>Guess a number (1–10)</p>
+    <input type="number" id="guess">
+    <br>
+    <button onclick="checkGuess()">Guess 🤔</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    /* CLICK GAME */
+    let clicks = 0;
+    function countClick() {
+        clicks++;
+        document.getElementById("clicks").innerText = clicks;
+    }
+
+    /* JOKE GAME */
+    const jokes = [
+        "Why don’t programmers like nature? Too many bugs 🐛😂",
+        "Why did JavaScript break up with HTML? It found CSS more stylish 😎",
+        "Why do programmers hate stairs? Because they’re always up to something 😆",
+        "Debugging: Removing bugs one by one 🐞"
+    ];
+
+    function newJoke() {
+        const random = Math.floor(Math.random() * jokes.length);
+        document.getElementById("joke").innerText = jokes[random];
+    }
+
+    /* GUESS GAME */
+    let secret = Math.floor(Math.random() * 10) + 1;
+
+    function checkGuess() {
+        let userGuess = document.getElementById("guess").value;
+        let result = document.getElementById("result");
+
+        if (userGuess == secret) {
+            result.innerText = "🎉 Correct! You are a genius 😎";
+            secret = Math.floor(Math.random() * 10) + 1;
+        } else {
+            result.innerText = "❌ Wrong! Try again. 😜";
+        }
+    }
+</script>
+
+</body>
+</html>

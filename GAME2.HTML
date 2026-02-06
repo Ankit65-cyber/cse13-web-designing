@@ -2,126 +2,181 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>😂 Funny Games Zone</title>
+<title>🎮 Mini Game Hub</title>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-        font-family: 'Comic Sans MS', cursive;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+        background: radial-gradient(circle at top, #1f1c2c, #928dab);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 900px;
+        padding: 30px;
         text-align: center;
-        padding: 20px;
     }
 
     h1 {
-        font-size: 40px;
-        animation: bounce 1s infinite alternate;
+        font-size: 3rem;
+        margin-bottom: 10px;
+        text-shadow: 0 0 15px #00ffe1;
     }
 
-    @keyframes bounce {
-        from { transform: translateY(0); }
-        to { transform: translateY(-10px); }
+    .subtitle {
+        opacity: 0.9;
+        margin-bottom: 40px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
     }
 
     .card {
-        background: white;
-        padding: 20px;
-        margin: 20px auto;
-        width: 320px;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 40px rgba(0,0,0,0.6);
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #00ffe1;
     }
 
     button {
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 12px 22px;
+        margin-top: 15px;
         border: none;
-        border-radius: 10px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #00ffe1, #00b3ff);
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
-        background: #ff6f61;
-        color: white;
-        margin-top: 10px;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
 
     button:hover {
-        background: #ff3d3d;
+        transform: scale(1.08);
+        box-shadow: 0 0 15px #00ffe1;
     }
 
     input {
-        padding: 8px;
+        width: 80px;
+        padding: 10px;
         font-size: 16px;
-        width: 60px;
         text-align: center;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        margin-top: 10px;
     }
 
-    .emoji {
-        font-size: 30px;
+    .result {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 14px;
+        opacity: 0.7;
     }
 </style>
 </head>
 
 <body>
 
-<h1>😂 Funny Games Zone</h1>
-<p>Time pass + learning = FUN 😜</p>
+<div class="container">
+    <h1>🎮 Mini Game Hub</h1>
+    <p class="subtitle">Fun • Logic • Timepass 😎</p>
 
-<!-- CLICK GAME -->
-<div class="card">
-    <h2>🎯 Click Madness</h2>
-    <p>Click as fast as you can!</p>
-    <button onclick="countClick()">CLICK ME 😆</button>
-    <p class="emoji">Clicks: <span id="clicks">0</span></p>
-</div>
+    <div class="grid">
 
-<!-- JOKE GAME -->
-<div class="card">
-    <h2>🤣 Joke Generator</h2>
-    <p id="joke">Ready to laugh?</p>
-    <button onclick="newJoke()">Tell me a joke 😂</button>
-</div>
+        <!-- CLICK GAME -->
+        <div class="card">
+            <h2>⚡ Speed Clicker</h2>
+            <p>How fast are your fingers?</p>
+            <button onclick="addClick()">CLICK ⚡</button>
+            <div class="result">Clicks: <span id="clicks">0</span></div>
+        </div>
 
-<!-- GUESS GAME -->
-<div class="card">
-    <h2>🎲 Guess the Number</h2>
-    <p>Guess a number (1–10)</p>
-    <input type="number" id="guess">
-    <br>
-    <button onclick="checkGuess()">Guess 🤔</button>
-    <p id="result"></p>
+        <!-- JOKE GAME -->
+        <div class="card">
+            <h2>😂 Random Jokes</h2>
+            <p id="jokeText">Click below to laugh!</p>
+            <button onclick="showJoke()">Joke Me 🤣</button>
+        </div>
+
+        <!-- GUESS GAME -->
+        <div class="card">
+            <h2>🔢 Number Guess</h2>
+            <p>Guess a number (1–10)</p>
+            <input type="number" id="guessInput">
+            <br>
+            <button onclick="guessNumber()">Guess 🎯</button>
+            <div class="result" id="guessResult"></div>
+        </div>
+
+    </div>
+
+    <footer>
+        Made for fun & practice 💻✨
+    </footer>
 </div>
 
 <script>
     /* CLICK GAME */
-    let clicks = 0;
-    function countClick() {
-        clicks++;
-        document.getElementById("clicks").innerText = clicks;
+    let clickCount = 0;
+    function addClick() {
+        clickCount++;
+        document.getElementById("clicks").innerText = clickCount;
     }
 
     /* JOKE GAME */
     const jokes = [
-        "Why don’t programmers like nature? Too many bugs 🐛😂",
-        "Why did JavaScript break up with HTML? It found CSS more stylish 😎",
-        "Why do programmers hate stairs? Because they’re always up to something 😆",
-        "Debugging: Removing bugs one by one 🐞"
+        "Why do programmers prefer dark mode? Because light attracts bugs 🐛",
+        "I told my computer I needed a break… it froze ❄️😂",
+        "Why was the JavaScript developer sad? Because he didn’t know how to ‘null’ his feelings 😆",
+        "Debugging is like being a detective in a crime movie 🔍"
     ];
 
-    function newJoke() {
-        const random = Math.floor(Math.random() * jokes.length);
-        document.getElementById("joke").innerText = jokes[random];
+    function showJoke() {
+        const index = Math.floor(Math.random() * jokes.length);
+        document.getElementById("jokeText").innerText = jokes[index];
     }
 
     /* GUESS GAME */
-    let secret = Math.floor(Math.random() * 10) + 1;
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
 
-    function checkGuess() {
-        let userGuess = document.getElementById("guess").value;
-        let result = document.getElementById("result");
+    function guessNumber() {
+        const userGuess = document.getElementById("guessInput").value;
+        const result = document.getElementById("guessResult");
 
-        if (userGuess == secret) {
-            result.innerText = "🎉 Correct! You are a genius 😎";
-            secret = Math.floor(Math.random() * 10) + 1;
+        if (userGuess == secretNumber) {
+            result.innerText = "🎉 Correct! New number generated!";
+            secretNumber = Math.floor(Math.random() * 10) + 1;
         } else {
-            result.innerText = "❌ Wrong! Try again. 😜";
+            result.innerText = "❌ Nope! Try again 😜";
         }
     }
 </script>

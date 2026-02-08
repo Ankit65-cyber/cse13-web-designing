@@ -1,0 +1,159 @@
+Code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Website </title>
+
+<style>
+.header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:blue;
+    padding:10px;
+}
+
+.header img{
+    width:100%;
+    max-height:150px;
+    object-fit:cover;
+}
+
+.nav{
+    background-color:blue;
+}
+
+.nav ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    text-align:center;
+}
+
+.nav li{
+    position:relative;
+}
+
+.nav a{
+    display:block;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    border-right:1px solid white;
+}
+
+.nav li:last-child > a{
+    border-right:none;
+}
+
+.nav ul ul{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background-color:blue;
+    width:100%;
+}
+
+.nav ul ul a{
+    font-weight:normal;
+    border:none;
+}
+
+.nav li:hover ul{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg" alt="College photo">
+</div>
+
+<div class="nav">
+<ul>
+
+<li>
+    <a href="#">Home</a>
+    <ul>
+        <li><a href="#">Notice</a></li>
+        <li><a href="#">Events</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="#">About Us</a>
+    <ul>
+        <li><a href="#">History</a></li>
+        <li><a href="#">Vision & Mission</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="#">Departments</a>
+    <ul>
+        <li><a href="#">CSE</a></li>
+        <li><a href="#">IT</a></li>
+        <li><a href="#">ME</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="#">Admissions</a>
+    <ul>
+        <li><a href="#">Eligibility</a></li>
+        <li><a href="#">Apply Now</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="#">Contact</a>
+    <ul>
+        <li><a href="#">Address</a></li>
+        <li><a href="#">Help Desk</a></li>
+    </ul>
+</li>
+
+</ul>
+</div>
+
+<div style="padding:20px; background-color:white; overflow:hidden;">
+
+    <div style="width:65%; float:left;">
+        <h2>St francis school – History</h2>
+        <p style="text-align:justify;">
+            Founded in 1982, the school has been operating for several decades and has a broad student base. 
+stfrancisramnagar.com
+
+• It is affiliated with the Council for the Indian School Certificate Examinations (CISCE), preparing students for ICSE and ISC examinations (10th & 12th grade). 
+stfrancisramnagar.com
+
+• The medium of instruction is English, with Hindi taught from the early years. 
+stfrancisramnagar.com
+
+• The school focuses on academic excellence, character development, values, and all-round growth,
+        </p>
+    </div>
+
+    <div style="width:30%; float:right; text-align:center;">
+        <img src="data:image/jpeg;base64,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" width="150">
+    </div>
+
+</div>
+
+<div style="background-color:black; color:white; padding:20px; text-align:center;">
+    <p>St francis school ,varanasi (U.P.)</p>
+    <p>Email: sts@gmail.com | Phone: +91-120-7135112</p>
+    <p>© 2025 All Rights Reserved</p>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Hub</title>
+<style>
+body{font-family:Arial;}
+h1{background:green;color:white;text-align:center;}
+img{width:120px;}
+a{background:green;color:white;padding:5px;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+<h1>Food Hub Restaurant</h1>
+
+<h3>Menu</h3>
+<ul>
+  <li>Starters
+    <ul>
+      <li>Soup</li>
+      <li>Roll</li>
+    </ul>
+  </li>
+  <li>Main Course
+    <ul>
+      <li>Veg
+        <ul>
+          <li>Paneer Curry</li>
+        </ul>
+      </li>
+      <li>Non-Veg
+        <ul>
+          <li>Chicken Curry</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Food Images</h3>
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d" alt="food">
+<img src="https://images.unsplash.com/photo-1604908812233-0c42fbaa3e9b" alt="food">
+
+<br><br>
+<a href="#">Reserve Table</a>
+
+</body>
+</html>
